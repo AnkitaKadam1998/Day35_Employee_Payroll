@@ -23,15 +23,25 @@ public class Employee_Payroll {
 		
 		con = DriverManager.getConnection(url,userName,password);
 		
-		insertEmployeeDetail(con,1,"Ankita","F","ankita80kadam@gmail.com");
-		insertSalaryData(con,1,10000,40000,4000,36000);
-		insertEmployeeDetail(con,2,"Manish","M","manishkadam@gmail.com");
-		insertSalaryData(con,2,20000,70000,8000,40000);
+		con.setAutoCommit(false);
 		
-		} catch (SQLException | ClassNotFoundException e) {
+		insertEmpDetail(con,4,"sanket","m","sanket80@gmail.com");
+		insertSalaryData(con,4,10000,40000,4000,36000);
+
+		con.commit();
+		
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+				System.out.println("JDBC Transaction rolled back successfully");
+			} catch (SQLException e1) {
+				System.out.println("SQLException in rollback"+e.getMessage());
+			}
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
-
 			try {
 				if (con != null)
 					con.close();
@@ -74,4 +84,6 @@ public class Employee_Payroll {
 		
 	}
 }
+
+
 
