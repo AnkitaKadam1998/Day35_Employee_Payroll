@@ -25,6 +25,8 @@ public class Employee_Payroll {
 		
 		insertEmployeeDetail(con,1,"Ankita","F","ankita80kadam@gmail.com");
 		insertSalaryData(con,1,10000,40000,4000,36000);
+		insertEmployeeDetail(con,2,"Manish","M","manishkadam@gmail.com");
+		insertSalaryData(con,2,20000,70000,8000,40000);
 		
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
