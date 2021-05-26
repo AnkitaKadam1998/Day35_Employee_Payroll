@@ -1,0 +1,3 @@
+class Empoyee_Payroll
+{
+}
